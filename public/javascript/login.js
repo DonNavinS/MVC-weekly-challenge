@@ -6,15 +6,37 @@ async function signupForm(event) {
   const password = document.querySelector("#password-signup").value.trim();
 
   if (email && username && password) {
-    await fetch("/api/users", {
+    const response = await fetch("/api/users", {
       method: "post",
       body: JSON.stringify({
         username,
         email,
         password,
       }),
-    }).then((response) => console.log(response));
+    });
+
+    if (response.ok) {
+      document.location.replace("/");
+    }
+  }
+}
+
+async function loginForm(event) {
+  event.preventDefault();
+
+  const email = document.querySelector("email-login").value.trim();
+  const password = document.querySelector("password-login").value.trim();
+
+  if (email && password) {
+    const response = await fetch("/api/users/login", {
+      method: "post",
+      body: JSON.stringify({
+        email,
+        password,
+      }),
+    }).then((response) => res.json(response));
   }
 }
 
 document.querySelector(".signup-form").addEventListener("submit", signupForm);
+document.querySelector(".login-form").addEventListener("submit", loginForm);

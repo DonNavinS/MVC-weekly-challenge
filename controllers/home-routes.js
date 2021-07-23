@@ -2,6 +2,7 @@ const router = require("express").Router();
 const { Post } = require("../models");
 
 router.get("/", (req, res) => {
+  console.log(req.session);
   Post.findAll()
 
     .then((postData) => {
