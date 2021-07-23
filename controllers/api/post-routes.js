@@ -39,7 +39,7 @@ router.get("/:id", (req, res) => {
 //Create a post
 router.post("/", (req, res) => {
   Post.create({
-    title: req.params.title,
+    title: req.body.title,
   })
     .then((newPostData) => res.json(newPostData))
 
