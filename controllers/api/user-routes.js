@@ -39,6 +39,9 @@ router.get("/:id", (req, res) => {
 
 //Create a user
 router.post("/", (req, res) => {
+  console.log(req.body.email);
+  console.log(req.body.username);
+  console.log(req.body.password);
   User.create({
     username: req.body.username,
     password: req.body.password,
@@ -52,6 +55,5 @@ router.post("/", (req, res) => {
       }
     });
 });
-
 
 module.exports = router;
