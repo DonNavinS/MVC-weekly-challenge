@@ -3,7 +3,6 @@ const { User } = require("../../models");
 
 //Get all users
 router.get("/", (req, res) => {
-  console.log("working");
   User.findAll()
 
     .then((userData) => res.json(userData))
@@ -39,9 +38,6 @@ router.get("/:id", (req, res) => {
 
 //Create a user
 router.post("/", (req, res) => {
-  console.log(req.body.email);
-  console.log(req.body.username);
-  console.log(req.body.password);
   User.create({
     username: req.body.username,
     password: req.body.password,
@@ -54,6 +50,34 @@ router.post("/", (req, res) => {
         console.log(err);
       }
     });
+});
+
+router.post("/login", (req, res) => {
+  User.findOne({
+    where: {
+      email: req.body.email,
+    },
+  }).then((userData) => {
+    if (!userData) {
+      res.json({ message: "No user with that email" });
+      return;
+    }
+
+    const validPassword = userData.checkPassword(req.body.password);
+
+    if (!validPassword) {
+      res.json({ message: "Incorrect Password" });
+      return;
+    }
+
+    req.session.save(() => {
+      req.session.user_id = userData.id;
+      req.session.username = userData.username;
+      req.session.loggedIn = true;
+
+      res.json({ user: userData, message: "You are now logged in!" });
+    });
+  });
 });
 
 module.exports = router;
