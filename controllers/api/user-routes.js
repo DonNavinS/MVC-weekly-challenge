@@ -63,12 +63,12 @@ router.post("/login", (req, res) => {
       return;
     }
 
-    const validPassword = userData.checkPassword(req.body.password);
+    // const validPassword = userData.checkPassword(req.body.password);
 
-    if (!validPassword) {
-      res.json({ message: "Incorrect Password" });
-      return;
-    }
+    // if (!validPassword) {
+    //   res.json({ message: "Incorrect Password" });
+    //   return;
+    // }
 
     req.session.save(() => {
       req.session.user_id = userData.id;
