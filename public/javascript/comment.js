@@ -10,8 +10,8 @@ async function commentForm(event) {
   ];
 
   if (comment_content) {
-    const response = await fetch("/api/comments", {
-      method: "POST",
+    const response = await fetch("/api/comment", {
+      method: "post",
       body: JSON.stringify({
         post_id,
         comment_content,
