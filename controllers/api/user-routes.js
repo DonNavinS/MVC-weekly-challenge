@@ -43,8 +43,15 @@ router.post("/", (req, res) => {
     password: req.body.password,
     email: req.body.email,
   })
-    .then((newUserData) => res.json(newUserData))
+    .then((userData) => {
+      req.session.save(() => {
+        req.session.user_id = userData.id;
+        req.session.username = userData.username;
+        req.session.loggedIn = true;
 
+        res.json(userData);
+      });
+    })
     .catch((err) => {
       if (err) {
         console.log(err);
@@ -87,7 +94,7 @@ router.post("/logout", (req, res) => {
       res.status(204).end();
     });
   }
-  res.status(404).end();
+  res.sta;
 });
 
 module.exports = router;

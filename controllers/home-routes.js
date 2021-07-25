@@ -22,27 +22,27 @@ router.get("/post/:id", (req, res) => {
     where: {
       id: req.params.id,
     },
-    attributes: ["id", "post_url", "title", "created_at", "post_content"],
-    include: [
-      {
-        model: Comment,
-        attributes: [
-          "id",
-          "comment_content",
-          "post_id",
-          "user_id",
-          "created_at",
-        ],
-        include: {
-          model: User,
-          attributes: ["username"],
-        },
-      },
-      {
-        model: User,
-        attributes: ["username"],
-      },
-    ],
+    //   attributes: ["id", "post_url", "title", "createdAt", "post_content"],
+    //   include: [
+    //     {
+    //       model: Comment,
+    //       attributes: [
+    //         "id",
+    //         "comment_content",
+    //         "post_id",
+    //         "user_id",
+    //         "created_at",
+    //       ],
+    //       include: {
+    //         model: User,
+    //         attributes: ["username"],
+    //       },
+    //     },
+    //     {
+    //       model: User,
+    //       attributes: ["username"],
+    //     },
+    //   ],
   })
     .then((postData) => {
       if (!postData) {
