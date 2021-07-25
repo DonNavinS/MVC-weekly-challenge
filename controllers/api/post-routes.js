@@ -42,6 +42,7 @@ router.post("/", (req, res) => {
     title: req.body.title,
     post_content: req.body.post_content,
     post_url: req.body.post_url,
+    user_id: req.session.user_id,
   })
     .then((newPostData) => res.json(newPostData))
 
