@@ -7,7 +7,7 @@ router.get("/", (req, res) => {
     where: {
       user_id: req.session.user_id,
     },
-    attributes: ["id", "post_url", "title", "createdAt"],
+    attributes: ["id", "post_url", "post_content", "title", "createdAt"],
 
     include: [
       {
@@ -32,7 +32,8 @@ router.get("/", (req, res) => {
   })
     .then((postData) => {
       const posts = postData.map((post) => post.get({ plain: true }));
-      res.render("dashboard", { posts, loggedIn: true });
+      console.log(posts);
+      res.render("dashboard", { posts: posts, loggedIn: req.session.loggedIn });
     })
     .catch((err) => {
       console.log(err);

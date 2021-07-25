@@ -17,18 +17,18 @@
     <button type="submit">Create</button>
   </form>
 
-  {{#if posts.length}}
+ {{#if posts.length}}
     <section>
       <h2>Your Posts</h2>
       <ol>
         {{#each posts as |post|}}
-          <li>
-            {{post}}
+           <p>{{post.title}}</p>
+               <p>{{post.post_content}}</p>
             <a href="/dashboard/edit/{{post.id}}" class="edit-link">Edit post</a>
           </li>
+
         {{/each}}
       </ol>
     </section>
   {{/if}}
-</section>
 <script src="/javascript/new-post.js"></script>
