@@ -8,7 +8,10 @@ router.get("/", (req, res) => {
     .then((postData) => {
       const posts = postData.map((post) => post.get({ plain: true }));
 
-      res.render("homepage", { posts });
+      res.render("homepage", {
+        posts,
+        loggedIn: req.session.loggedIn,
+      });
     })
     .catch((err) => {
       if (err) {
@@ -33,10 +36,12 @@ router.get("/post/:id", (req, res) => {
           "user_id",
           "createdAt",
         ],
-        include: {
-          model: User,
-          attributes: ["username"],
-        },
+        include: [
+          {
+            model: User,
+            attributes: ["username"],
+          },
+        ],
       },
       {
         model: User,
@@ -51,7 +56,7 @@ router.get("/post/:id", (req, res) => {
       }
 
       const post = postData.get({ plain: true });
-
+      console.log(post);
       res.render("post", {
         post,
         loggedIn: req.session.loggedIn,

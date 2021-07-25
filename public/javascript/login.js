@@ -40,6 +40,7 @@ async function loginFormHandler(event) {
 
     if (response.ok) {
       document.location.replace("/");
+      document.location.reload();
     } else {
       alert(response.statusText);
     }
