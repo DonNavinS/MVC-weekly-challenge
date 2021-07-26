@@ -1,9 +1,10 @@
 <article class="post">
   <div class="title">
-    <h1><a href="{{post.post_url}}" target="_blank">{{post.title}}</a></h1>
-    <span>({{post.post_url}})</span>
+    <h1>{{post.title}}</h1>
+    <a href="{{post.post_url}}">({{post.post_url}})</a>
   </div>
   <div class="post-content">{{post.post_content}}</div>
+  <span>Posted by {{post.user.username}} on {{post.createdAt}}</span>
   <div>
     <a href="/post/{{post.id}}">comments</a>
   </div>

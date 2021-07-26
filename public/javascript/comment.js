@@ -2,7 +2,7 @@ async function commentForm(event) {
   event.preventDefault();
 
   const comment_content = document
-    .querySelector('textarea[name="comment-body"]')
+    .querySelector('textarea[name="comment-content"]')
     .value.trim();
 
   const post_id = window.location.toString().split("/")[
@@ -22,6 +22,7 @@ async function commentForm(event) {
     });
 
     if (response.ok) {
+      console.log(comment_content);
       document.location.reload();
     } else {
       alert(response.statusText);

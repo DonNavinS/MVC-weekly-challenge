@@ -32,12 +32,32 @@ router.get("/", (req, res) => {
   })
     .then((postData) => {
       const posts = postData.map((post) => post.get({ plain: true }));
-      console.log(posts);
+      //   console.log(posts);
       res.render("dashboard", { posts: posts, loggedIn: req.session.loggedIn });
     })
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);
+    });
+});
+
+router.get("/edit/:id", (req, res) => {
+  Post.findOne({
+    where: {
+      id: req.body.id,
+    },
+    attributes: ["id", "post_url", "post_content", "title", "createdAt"],
+  })
+    .then((data) => {
+      const postData = data.get({ plain: true });
+      console.log(postData);
+      res.render("edit", {
+        post: postData,
+        loggedIn: req.session.loggedIn,
+      });
+    })
+    .catch((err) => {
+      res.json(err);
     });
 });
 
