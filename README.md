@@ -1,4 +1,8 @@
 # MVC-weekly-challenge
+Links to deployed Application: 
+https://github.com/DonNavinS/MVC-weekly-challenge
+https://mvc-weekly-challenge.herokuapp.com/
+
 This challenge assignment required us to use a variety of node packages to create a blog site in which users can sign up and login, create posts, view other peoples'
 posts, and post comments on them. I used sequelize and mySQL node packages to create a database and tables for the users that sign up, as well as for the posts and,
 comments, and sessions. Express was used to create various routes for posting and retrieving data such as blog posts and comments. The handlebars package was used 
