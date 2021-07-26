@@ -2,8 +2,8 @@ const router = require("express").Router();
 const { Comment } = require("../../models");
 
 router.post("/", (req, res) => {
+  console.log(req.body);
   if (req.session) {
-    console.log(req.body);
     Comment.create({
       comment_content: req.body.comment_content,
       post_id: req.body.post_id,

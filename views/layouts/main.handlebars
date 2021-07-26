@@ -10,16 +10,19 @@
   <body>
     <div class="wrapper">
       <header>
-        <h1>
-          <a href="/">Navin's Blog</a>
-        </h1>
+        <div class="title-wrapper">
+          <h1>
+            <a href="/" class="main-title">Navin's Blog</a>
+          </h1>
+        </div>
         <nav>
-          <a href="/dashboard">Dashboard</a>
+          <a class="nav-items" href="/">Homepage</a>
+          <a class="nav-items" href="/dashboard">Dashboard</a>
 
           {{#if loggedIn}}
-            <button id="logout">Logout</button>
+            <button class="nav-items" id="logout">Logout</button>
           {{else}}
-            <a href="/login">Login</a>
+            <a class="nav-items" href="/login">Login</a>
 
           {{/if}}
 

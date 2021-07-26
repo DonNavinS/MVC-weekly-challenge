@@ -5,9 +5,7 @@
   </div>
   <div class="post-content">{{post.post_content}}</div>
   <span>Posted by {{post.user.username}} on {{post.createdAt}}</span>
-  <div>
-    <a href="/post/{{post.id}}">comments</a>
-  </div>
+
 </article>
 
 {{#if loggedIn}}
@@ -21,9 +19,9 @@
     </div>
   </form>
 {{/if}}
-
+<h5>Comments</h5>
 <div class="comments">
-  {{#each post.comment}}
+  {{#each post.comments}}
     <section class="comment">
       <div>
         {{user.username}}
@@ -36,3 +34,5 @@
     </section>
   {{/each}}
 </div>
+
+<script src="/javascript/comment.js"></script>

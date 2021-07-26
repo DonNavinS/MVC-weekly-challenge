@@ -2,29 +2,33 @@
   <h2>Create New Post</h2>
 
   <form class="new-post-form">
+    <div class="new-post-wrapper">
     <div>
       <label for="post-title">Title</label>
-      <input type="text" id="post-title" name="post-title" />
+      <input size="50" type="text" id="post-title" name="post-title" />
     </div>
     <div>
       <label for="post-content">Post Content</label>
-      <input type="text" id="post-content" name="post-content" />
+      <input size="50" type="text" id="post-content" name="post-content" />
     </div>
     <div>
       <label for="post-url">Link</label>
-      <input id="post-url" name="post-url" />
+      <input size="50" id="post-url" name="post-url" />
     </div>
     <button type="submit">Create</button>
+    </div>
   </form>
 
  {{#if posts.length}}
     <section>
+     
       <h2>Your Posts</h2>
       <ol>
         {{#each posts as |post|}}
-           <p>{{post.title}}</p>
+          <li>
+            
+           <h4>{{post.title}}</h4>
                <p>{{post.post_content}}</p>
-            <a href="/dashboard/edit/{{post.id}}" class="edit-link">Edit post</a>
           </li>
 
         {{/each}}

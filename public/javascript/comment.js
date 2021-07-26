@@ -1,6 +1,6 @@
 async function commentForm(event) {
+  console.log(event);
   event.preventDefault();
-
   const comment_content = document
     .querySelector('textarea[name="comment-content"]')
     .value.trim();
@@ -29,5 +29,5 @@ async function commentForm(event) {
     }
   }
 }
-
+console.log(document.querySelector(".comment-form"));
 document.querySelector(".comment-form").addEventListener("submit", commentForm);
